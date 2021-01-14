@@ -114,7 +114,8 @@ func BezCurve(t int, xs ...float32) []float32 {
 
 func CubBezCurve(t int, xs ...float32) []float32 {
 	var Xa []float32
-	for i := float32(0); int(i) < t; i += 1 / float32(t) {
+	for j := 0; j < t; j += 1 {
+		i := float32(j)/float32(t)
 		Xa = append(Xa, float32((1-i)*(1-i)*(1-i))*xs[0]+3*(1-i)*(1-i)*i*xs[2]+3*(1-i)*i*i*xs[4]+i*i*i*xs[6], float32((1-i)*(1-i)*(1-i))*xs[1]+3*(1-i)*(1-i)*i*xs[3]+3*(1-i)*i*i*xs[5]+i*i*i*xs[7], 0, 1, 1, 1, 0, 0, 1)
 	}
 	return Xa
